@@ -29,6 +29,7 @@ def select_tweeters(followers):
       for e in res_arr:
         # combine all the list together in a temp2 array
         temp2 += e[1]
+      temp2 += [x[0] for x in res_arr]
       if len(set(temp2)) > counter:
         final_arr = res_arr[:]
         counter = len(set(temp2))
@@ -56,6 +57,7 @@ def select_tweeters(followers):
       temp = []
       for i in range(len(result_ls)):
         temp += result_ls[i][1]
+      temp += [x[0] for x in result_ls]
       current_score = len(set(temp))
     else:
       result_ls.append(e)
@@ -65,7 +67,7 @@ def select_tweeters(followers):
   for e in result_ls:
     final_ls.append(e[0])
 
-  return final_ls
+  return sorted(final_ls)
 
 
 
