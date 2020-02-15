@@ -29,7 +29,7 @@ def select_tweeters(followers):
       for e in res_arr:
         # combine all the list together in a temp2 array
         temp2 += e[1]
-      temp2 += [x[0] for x in res_arr]
+      temp2 += [x[0] for x in res_arr] # consider the person sending out the tweet as well
       if len(set(temp2)) > counter:
         final_arr = res_arr[:]
         counter = len(set(temp2))
@@ -49,15 +49,13 @@ def select_tweeters(followers):
   for e in indexed_ls:
     if len(result_ls) == 5:
       result_ls, current_score = max_score(result_ls,e,current_score)
-      # print(result_ls, current_score)
-      # break
 
     elif len(result_ls) == 4:
       result_ls.append(e)
       temp = []
       for i in range(len(result_ls)):
         temp += result_ls[i][1]
-      temp += [x[0] for x in result_ls]
+      temp += [x[0] for x in result_ls] # consider the one sending the tweets as well
       current_score = len(set(temp))
     else:
       result_ls.append(e)
